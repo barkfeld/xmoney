@@ -1,0 +1,17 @@
+SELECT
+Tb_End_Transportadoras.Cod_S_Endereco as Id,
+Tb_End_Transportadoras.Endereco,
+Tb_End_Transportadoras.CEP,
+Tb_End_Transportadoras.Bairro,
+Tb_End_Transportadoras.Cidade,
+Tb_Estados.Nome as Estado,
+Tb_End_Transportadoras.Contato,
+Tb_End_Transportadoras.Fone,
+Tb_End_Transportadoras.Referencia,
+Tb_Tipos_Endereco.Descricao as Tipo,
+Tb_Transportadoras.Nome as Transportadora
+FROM
+Tb_End_Transportadoras
+LEFT JOIN Tb_Tipos_Endereco ON Tb_End_Transportadoras.Cod_S_Tipo = Tb_Tipos_Endereco.Cod_S_Tipo
+LEFT JOIN Tb_Transportadoras ON Tb_End_Transportadoras.Cod_S_Trans = Tb_Transportadoras.Cod_S_Trans
+LEFT JOIN Tb_Estados ON Tb_End_Transportadoras.Cod_S_Estado = Tb_Estados.Cod_S_Estado

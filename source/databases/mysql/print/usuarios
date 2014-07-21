@@ -1,0 +1,13 @@
+SELECT
+Cod_S_Usuario as Id,
+Tb_Filiais.Nome as Filial,
+Tb_Usuarios.Usuario,
+Tb_Usuarios.Nome,
+Tb_Deptos.Nome as Depto,
+Tb_Cargos.Nome as Cargo,
+Tb_Usuarios.Email
+FROM
+Tb_Usuarios
+LEFT JOIN Tb_Filiais ON Tb_Usuarios.Cod_S_Filial = Tb_Filiais.Cod_S_Filial
+LEFT JOIN Tb_Deptos ON Tb_Usuarios.Cod_S_Depto = Tb_Deptos.Cod_S_Depto
+LEFT JOIN Tb_Cargos ON Tb_Usuarios.Cod_S_Cargo = Tb_Cargos.Cod_S_Cargo

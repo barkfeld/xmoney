@@ -1,0 +1,24 @@
+  select 
+    Tb_Produtos.Cod_S_Produto AS Id,
+    Tb_Sit_Produtos.Nome as 'Situação',
+    Tb_Tipos_Produto.Nome as Tipo,
+    Tb_Grupos.Nome as Grupo,
+    Tb_Marcas.Nome as Marca,
+    Tb_Produtos.Ativo,
+    Tb_Produtos.Modelo,
+    Tb_Produtos.Descricao as 'Descrição',
+    Tb_Produtos.Custo,
+    Tb_Produtos.Margem,
+    Tb_Produtos.Percentual,
+    Tb_Produtos.ICMS,
+    Tb_Produtos.IPI,
+    Tb_Produtos.ClasFiscal as 'Clas. Fiscal'
+  from
+(((((((Tb_Produtos left join Tb_Sit_Produtos  on((Tb_Produtos.Cod_S_Sit = Tb_Sit_Produtos.Cod_S_Sit)))
+                 left join Tb_Tipos_Produto on((Tb_Produtos.Cod_S_Tipo = Tb_Tipos_Produto.Cod_S_Tipo)))
+                 left join Tb_Grupos        on((Tb_Produtos.Cod_S_Grupo = Tb_Grupos.Cod_S_Grupo)))
+                 left join Tb_Marcas        on((Tb_Produtos.Cod_S_Marca = Tb_Marcas.Cod_S_Marca)))
+                 left join Tb_Unid_Compras  on((Tb_Produtos.Cod_S_Compra = Tb_Unid_Compras.Cod_S_Unidade)))
+                 left join Tb_Unid_Vendas   on((Tb_Produtos.Cod_S_Venda = Tb_Unid_Vendas.Cod_S_Unidade)))
+                 left join Tb_Unid_Estoques  on((Tb_Produtos.Cod_S_Estoque = Tb_Unid_Estoques.Cod_S_Unidade)))
+

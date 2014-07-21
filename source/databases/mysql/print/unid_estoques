@@ -1,0 +1,5 @@
+SELECT
+Tb_Unid_Estoques.Cod_S_Unidade as Id,
+Tb_Unid_Estoques.Nome
+FROM
+Tb_Unid_Estoques

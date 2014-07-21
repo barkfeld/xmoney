@@ -1,0 +1,24 @@
+SELECT
+Tb_Mov_Contas_Pagar.Cod_S_Conta as CodConta,
+Tb_Contas_Pagar.NumDoc,
+Tb_Fornecedores.Nome as Fornecedor,
+Tb_Bancos.Nome as Banco,
+Tb_Tipos_Despesa.Nome as Despesa,
+Tb_Formas_Pgto.Nome as 'Forma Pgto',
+Tb_Contas_Pagar.Parcela,
+format(Tb_Contas_Pagar.ValorDoc, 2) as 'Valor Doc.',
+format(Tb_Mov_Contas_Pagar.Juros, 2) as Juros,
+format(Tb_Mov_Contas_Pagar.Desconto, 2) as Desconto,
+format(Tb_Mov_Contas_Pagar.Total, 2) as Total,
+date_format(Tb_Contas_Pagar.Vencimento, '%d/%m/%Y') as Vencimento,
+date_format(Tb_Mov_Contas_Pagar.DataInc, '%d/%m/%Y') as Pagamento
+FROM
+Tb_Mov_Contas_Pagar
+LEFT JOIN Tb_Contas_Pagar ON Tb_Mov_Contas_Pagar.Cod_S_Conta = Tb_Contas_Pagar.Cod_S_Conta
+LEFT JOIN Tb_Filiais ON Tb_Contas_Pagar.Cod_S_Filial = Tb_Filiais.Cod_S_Filial
+LEFT JOIN Tb_Bancos ON Tb_Mov_Contas_Pagar.Cod_S_Banco = Tb_Bancos.Cod_S_Banco
+LEFT JOIN Tb_Tipos_Despesa ON Tb_Mov_Contas_Pagar.Cod_S_Despesa = Tb_Tipos_Despesa.Cod_S_Tipo
+LEFT JOIN Tb_Formas_Pgto ON Tb_Mov_Contas_Pagar.Cod_S_Forma = Tb_Formas_Pgto.Cod_S_Forma
+LEFT JOIN Tb_Usuarios ON Tb_Mov_Contas_Pagar.Cod_S_Usuario_Inc = Tb_Usuarios.Cod_S_Usuario
+LEFT JOIN Tb_Fornecedores ON Tb_Contas_Pagar.Cod_S_For = Tb_Fornecedores.Cod_S_For
+

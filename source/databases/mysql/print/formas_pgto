@@ -1,0 +1,8 @@
+SELECT
+Tb_Formas_Pgto.Cod_S_Forma as Id,
+Tb_Tipos_Doc.Nome as 'Tipo de Doc.',
+Tb_Formas_Pgto.Nome
+FROM
+Tb_Formas_Pgto
+LEFT JOIN Tb_Tipos_Doc ON Tb_Formas_Pgto.Cod_S_Tipo_Doc = Tb_Tipos_Doc.Cod_S_Tipo
+

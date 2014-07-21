@@ -1,0 +1,8 @@
+SELECT
+Tb_Marcas.Cod_S_Marca as Id,
+Tb_Marcas.Nome,
+Tb_Marcas.Atalho,
+Tb_Marcas.Ativo
+FROM
+Tb_Marcas
+

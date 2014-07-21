@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#
+# X-Money - Gestao Empresarial Integrada
+#
+# Copyright (C) 2010 - Eneias Ramos de Melo <neneias@gmail.com>
+#
+# Use: print <module>
+#
+
+XMONEY_SPOOL="/var/spool/xmoney"
+CONFIG="$HOME/.xmoney/sql.conf"
+ERR_TITLE="X-Money - Erro interno de impressao"
+ERR_DIALOG="zenity --error"
+ERR_CONFIG_FILE="O arquivo de configuracao nao foi encontrado"
+ERR_USER_UID="O codigo interno do usuario nao foi definido"
+
+if [ $1 ]; then
+    if [ $XMONEY_UID ]; then
+	if [ -f $CONFIG ]; then
+	    HOST_SLAVE=`grep host_slave $CONFIG | awk '{ print $3 }'`
+	    USERNAME_SLAVE=`grep username_slave $CONFIG | awk '{ print $3 }'`
+	    PASSWORD_SLAVE=`grep password_slave $CONFIG | awk '{ print $3 }'`
+	    DATABASE_SLAVE=`grep database_slave $CONFIG | awk '{ print $3 }'`
+	    PORT_SLAVE=`grep port_slave $CONFIG | awk '{ print $3 }'`
+	else
+	    $ERR_DIALOG --title="$ERR_TITLE" --text="$ERR_CONFIG_FILE"
+	    exit 1
+	fi
+	
+	cat $1 $XMONEY_SPOOL/$XMONEY_UID.sql | mysql -t --default-character-set=utf8 --host=$HOST_SLAVE --user=$USERNAME_SLAVE --password=$PASSWORD_SLAVE --database=$DATABASE_SLAVE --port=$PORT_SLAVE
+    else
+	$ERR_DIALOG --title="$ERR_TITLE" --text="$ERR_USER_UID"
+	exit 1
+    fi
+else
+    echo "Use: $0 <module>"
+    exit 1
+fi
+
+exit 0

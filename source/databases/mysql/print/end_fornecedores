@@ -1,0 +1,18 @@
+SELECT
+Tb_End_Fornecedores.Cod_S_Endereco as Id,
+Tb_End_Fornecedores.Endereco,
+Tb_End_Fornecedores.CEP,
+Tb_End_Fornecedores.Bairro,
+Tb_End_Fornecedores.Cidade,
+Tb_Estados.Nome as Estado,
+Tb_End_Fornecedores.Contato,
+Tb_End_Fornecedores.Fone,
+Tb_End_Fornecedores.Referencia,
+Tb_Tipos_Endereco.Descricao as Tipo,
+Tb_Fornecedores.Nome as Fornecedor
+FROM
+Tb_End_Fornecedores
+LEFT JOIN Tb_Tipos_Endereco ON Tb_End_Fornecedores.Cod_S_Tipo = Tb_Tipos_Endereco.Cod_S_Tipo
+LEFT JOIN Tb_Fornecedores ON Tb_End_Fornecedores.Cod_S_For = Tb_Fornecedores.Cod_S_For
+LEFT JOIN Tb_Estados ON Tb_End_Fornecedores.Cod_S_Estado = Tb_Estados.Cod_S_Estado
+

@@ -1,0 +1,6 @@
+SELECT
+Tb_Perfis.Cod_S_Perfil as Id,
+Tb_Perfis.Nome,
+Tb_Perfis.Descricao as Descricao
+FROM
+Tb_Perfis

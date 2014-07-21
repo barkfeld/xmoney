@@ -1,0 +1,12 @@
+SELECT
+Tb_Transportadoras.Cod_S_Trans as Id,
+Tb_Tipos_Pessoa.Descricao as Pessoa,
+Tb_Transportadoras.Nome as 'Nome / Razao',
+Tb_Transportadoras.CPF as 'CPF / CNPJ',
+Tb_Transportadoras.IE as 'I.E.',
+Tb_Transportadoras.Fone,
+Tb_Transportadoras.Fax,
+Tb_Transportadoras.Email
+FROM
+Tb_Transportadoras
+LEFT JOIN Tb_Tipos_Pessoa ON Tb_Transportadoras.Cod_S_Tipo = Tb_Tipos_Pessoa.Cod_S_Tipo

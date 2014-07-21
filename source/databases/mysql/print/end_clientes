@@ -1,0 +1,17 @@
+SELECT
+Tb_End_Clientes.Cod_S_Endereco as Id,
+Tb_End_Clientes.Endereco,
+Tb_End_Clientes.CEP,
+Tb_End_Clientes.Bairro,
+Tb_End_Clientes.Cidade,
+Tb_Estados.Nome as Estado,
+Tb_End_Clientes.Contato,
+Tb_End_Clientes.Fone,
+Tb_End_Clientes.Referencia,
+Tb_Tipos_Endereco.Descricao as Tipo,
+Tb_Clientes.Nome as Cliente
+FROM
+Tb_End_Clientes
+LEFT JOIN Tb_Tipos_Endereco ON Tb_End_Clientes.Cod_S_Tipo = Tb_Tipos_Endereco.Cod_S_Tipo
+LEFT JOIN Tb_Clientes ON Tb_End_Clientes.Cod_S_Cli = Tb_Clientes.Cod_S_Cli
+LEFT JOIN Tb_Estados ON Tb_End_Clientes.Cod_S_Estado = Tb_Estados.Cod_S_Estado

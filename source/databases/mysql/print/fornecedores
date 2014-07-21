@@ -1,0 +1,12 @@
+SELECT
+Tb_Fornecedores.Cod_S_For as Id,
+Tb_Tipos_Pessoa.Descricao as Pessoa,
+Tb_Fornecedores.Nome as 'Nome / Razao',
+Tb_Fornecedores.CPF as 'CPF / CNPJ',
+Tb_Fornecedores.IE as 'I.E.',
+Tb_Fornecedores.Fone,
+Tb_Fornecedores.Fax,
+Tb_Fornecedores.Email
+FROM
+Tb_Fornecedores
+LEFT JOIN Tb_Tipos_Pessoa ON Tb_Fornecedores.Cod_S_Tipo = Tb_Tipos_Pessoa.Cod_S_Tipo

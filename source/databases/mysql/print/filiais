@@ -1,0 +1,10 @@
+SELECT
+Cod_S_Filial as Id,
+Razao,
+Cnpj as 'CPF / CNPJ',
+Endereco,
+Cidade,
+Tel as Telefone,
+Email
+FROM
+Tb_Filiais

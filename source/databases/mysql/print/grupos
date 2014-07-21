@@ -1,0 +1,8 @@
+SELECT
+Tb_Grupos.Cod_S_Grupo as Id,
+Tb_Grupos.Nome,
+Tb_Grupos.Atalho,
+Tb_Grupos.Ativo
+FROM
+Tb_Grupos
+

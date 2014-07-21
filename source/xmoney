@@ -1,0 +1,77 @@
+#!/bin/bash
+
+#
+# X-Money - Gestao Empresarial Integrada
+#
+# Copyright (C) 2010 - Eneias Ramos de Melo <neneias@gmail.com>
+#
+
+RND=$RANDOM
+
+ZENITY="/usr/bin/zenity"
+
+# PHP Exception
+function Exception ()
+{
+    $ZENITY --error \
+    --title="X-Money - Erro" \
+    --window-icon="/usr/share/xmoney/images/logo.png" \
+    --text=" Ops! \n Ocorreu um erro enquanto o X-money estava sendo executado! \n Por favor, verifique o arquivo de log $RND para mais detalhes. "
+    
+    exit 1
+}
+
+mkdir -p $HOME/.xmoney/log
+
+echo -e "X-Money - Gestão Empresarial - Versão 0.3\n" \
+        "Copyright © 2010 Enéias Ramos de Melo <eneias@gamuza.com.br>\n" \
+        "Todos os direitos Reservados.\n"
+
+uname -a
+php -v
+
+PHP="/usr/bin/php5 -d enable_dl=On "
+LOG="$HOME/.xmoney/log/$RND"
+
+echo
+echo "Usando arquivo de log: $LOG"
+
+cat << __EOF__ | $PHP >> $LOG
+
+<?php
+
+/*
+ * X-Money - Gestao Empresarial Integrada
+ *
+ * Copyright (C) 2010 - Eneias Ramos de Melo <neneias@gmail.com>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+if (!extension_loaded ('php-gtk')) dl ('php_gtk2.' . PHP_SHLIB_SUFFIX);
+
+require_once 'runtime/xmoney.php';
+
+ExecXMoney ();
+
+?>
+
+__EOF__
+
+if [ $? == 255 ]; then
+    Exception
+fi
+
+exit 0

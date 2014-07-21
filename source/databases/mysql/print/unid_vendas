@@ -1,0 +1,7 @@
+SELECT
+Tb_Unid_Vendas.Cod_S_Unidade as Id,
+Tb_Unid_Vendas.Nome,
+Tb_Unid_Vendas.Descricao as 'Descrição'
+FROM
+Tb_Unid_Vendas
+

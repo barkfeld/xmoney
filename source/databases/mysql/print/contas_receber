@@ -1,0 +1,17 @@
+SELECT
+Tb_Contas_Receber.Cod_S_Conta as Id,
+Tb_Filiais.Nome as Filial,
+Tb_Clientes.Nome AS Cliente,
+Tb_Tipos_Doc.Nome as 'Tipo Doc.',
+Tb_Contas_Receber.NumDoc as 'Num Doc.',
+Tb_Contas_Receber.Parcela,
+date_format(Tb_Contas_Receber.DataInc, '%d/%m/%Y') as Emissao,
+date_format(Tb_Contas_Receber.Vencimento, '%d/%m/%Y') as Vencimento,
+format(Tb_Contas_Receber.ValorDoc, 2) as 'Valor Doc.',
+Tb_Sit_Conta.Descricao as Situacao
+FROM
+Tb_Contas_Receber
+LEFT JOIN Tb_Tipos_Doc ON Tb_Contas_Receber.Cod_S_TipoDoc = Tb_Tipos_Doc.Cod_S_Tipo
+LEFT JOIN Tb_Clientes ON Tb_Contas_Receber.Cod_S_Cli = Tb_Clientes.Cod_S_Cli
+LEFT JOIN Tb_Filiais ON Tb_Contas_Receber.Cod_S_Filial = Tb_Filiais.Cod_S_Filial
+LEFT JOIN Tb_Sit_Conta ON Tb_Contas_Receber.Cod_S_Sit = Tb_Sit_Conta.Cod_S_Sit

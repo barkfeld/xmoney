@@ -1,0 +1,9 @@
+SELECT
+Tb_Bancos.Cod_S_Banco as Id,
+Tb_Bancos.Nome,
+Tb_Bancos.Agencia,
+Tb_Bancos.Conta,
+Tb_Filiais.Nome as Filial
+FROM
+Tb_Bancos
+LEFT JOIN Tb_Filiais ON Tb_Bancos.Cod_S_Filial = Tb_Filiais.Cod_S_Filial

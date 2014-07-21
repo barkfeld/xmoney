@@ -1,0 +1,6 @@
+SELECT
+Tb_Tipos_Produto.Cod_S_Tipo as Id,
+Tb_Tipos_Produto.Nome as 'Tipo de Produto',
+Tb_Tipos_Produto.Abreviacao as Abreviacao
+FROM
+Tb_Tipos_Produto

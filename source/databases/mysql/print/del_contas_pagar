@@ -1,0 +1,16 @@
+SELECT
+Tb_Del_Contas_Pagar.Cod_S_Conta as CodConta,
+Tb_Filiais.Nome as Filial,
+Tb_Fornecedores.Nome as Fornecedor,
+Tb_Contas_Pagar.NumDoc,
+Tb_Contas_Pagar.Parcela,
+format(Tb_Contas_Pagar.ValorDoc, 2) as 'Valor Doc.',
+date_format(Tb_Contas_Pagar.Vencimento, '%d/%m/%Y') as Vencimento,
+date_format(Tb_Del_Contas_Pagar.DataInc, '%d/%m/%Y') as Cancelado
+FROM
+Tb_Del_Contas_Pagar
+LEFT JOIN Tb_Contas_Pagar ON Tb_Del_Contas_Pagar.Cod_S_Conta = Tb_Contas_Pagar.Cod_S_Conta
+LEFT JOIN Tb_Filiais ON Tb_Contas_Pagar.Cod_S_Filial = Tb_Filiais.Cod_S_Filial
+LEFT JOIN Tb_Fornecedores ON Tb_Contas_Pagar.Cod_S_For = Tb_Fornecedores.Cod_S_For
+LEFT JOIN Tb_Usuarios ON Tb_Del_Contas_Pagar.Cod_S_Usuario_Inc = Tb_Usuarios.Cod_S_Usuario
+

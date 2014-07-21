@@ -1,0 +1,5 @@
+SELECT
+Tb_Tipos_Despesa.Cod_S_Tipo as Id,
+Tb_Tipos_Despesa.Nome as 'Tipo de Despesa'
+FROM
+Tb_Tipos_Despesa

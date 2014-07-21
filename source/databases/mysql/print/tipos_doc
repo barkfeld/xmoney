@@ -1,0 +1,6 @@
+SELECT
+Tb_Tipos_Doc.Cod_S_Tipo as Id,
+Tb_Tipos_Doc.Nome as 'Tipo de Doc.',
+Tb_Tipos_Doc.Abreviacao as Abreviacao
+FROM
+Tb_Tipos_Doc

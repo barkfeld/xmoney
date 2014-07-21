@@ -1,0 +1,12 @@
+SELECT
+Tb_Clientes.Cod_S_Cli as Id,
+Tb_Tipos_Pessoa.Descricao as Pessoa,
+Tb_Clientes.Nome as 'Nome / Razao',
+Tb_Clientes.CPF as 'CPF / CNPJ',
+Tb_Clientes.IE as 'I.E.',
+Tb_Clientes.Fone,
+Tb_Clientes.Fax,
+Tb_Clientes.Email
+FROM
+Tb_Clientes
+LEFT JOIN Tb_Tipos_Pessoa ON Tb_Clientes.Cod_S_Tipo = Tb_Tipos_Pessoa.Cod_S_Tipo
